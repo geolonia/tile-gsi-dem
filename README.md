@@ -15,9 +15,8 @@ https://fgd.gsi.go.jp/download/ref_dem.html
 
 ```
 $ git clone git@github.com:geolonia/tile-gsi-dem.git
-$ cd tile-gsi-dem.git
+$ cd tile-gsi-dem
 $ npm run build
-$ mb-util tiles gsi-dem.mbtiles --image_format=png
 ```
 
 タイルのビルドが完了すると、`mokuroku-dem10b.csv` が最新の状態にアップデートされますので、動作確認後にコミットしておくと次回以降その差分のタイルだけがビルドされます。
