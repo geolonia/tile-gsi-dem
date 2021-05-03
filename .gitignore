@@ -88,3 +88,4 @@ assets
 /*.gsi.go.jp
 /tiles
 /*.mbtiles
+/.tmp

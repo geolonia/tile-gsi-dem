@@ -10,16 +10,15 @@ https://fgd.gsi.go.jp/download/ref_dem.html
 
 ## ビルド方法
 
+タイルは、`mokuroku-dem10b.csv` を元に差分のみがビルドされます。
+はじめてタイルをビルドする際には、`mokuroku-dem10b.csv` を削除してください。
+
 ```
 $ git clone git@github.com:geolonia/tile-gsi-dem.git
 $ cd tile-gsi-dem.git
-$ wget -i tilels-dem.csv -m # 約7時間
-$ npm run build # 約2時間
-$ find ./tiles -name "*.png" -print0 | xargs -0 -I{} cwebp {} -o {}.webp # webpに変換
+$ npm run build
 $ mb-util tiles gsi-dem.mbtiles --image_format=png
 ```
-
-* `wget` コマンドでダウンロードしたファイルは、`maps.gsi.go.jp` 以下に保存されます。このディレクトリを残しておくと、次回以降同じ内容のファイルはダウンロードされませんので、定期的にアップデートしたい場合は残すことをおすすめします。
 
 ## 参考
 
