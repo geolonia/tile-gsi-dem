@@ -71,9 +71,6 @@ fetch(mokurokuURL)
               let boxr = parseInt(box.slice(-6, -4), 16)
               let boxg = parseInt(box.slice(-4, -2), 16)
               let boxb = parseInt(box.slice(-2), 16)
-              const rgb = [0, 1, 2].map(j => {
-                return png.data[i + j].toString()
-              }).join()
 
               png.data[i] = boxr
               png.data[i + 1] = boxg
@@ -85,6 +82,8 @@ fetch(mokurokuURL)
           fs.mkdirSync(path.dirname(filename), {recursive: true})
           const pngbuffer = PNG.sync.write(png)
           fs.writeFileSync(filename, pngbuffer)
+
+          console.log(filename)
         }
       }
 
