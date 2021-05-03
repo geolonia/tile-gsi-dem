@@ -1,0 +1,20 @@
+{
+  "name": "gsi-dem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "gsi-dem": "build.js"
+  },
+  "scripts": {
+    "build": "node bin/transcode.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graceful-fs": "^4.2.6",
+    "node-filelist": "^1.0.0",
+    "pngjs": "^6.0.0",
+    "recursive-readdir": "^2.2.2"
+  }
+}
