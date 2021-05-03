@@ -20,6 +20,9 @@ $ npm run build
 $ mb-util tiles gsi-dem.mbtiles --image_format=png
 ```
 
+タイルのビルドが完了すると、`mokuroku-dem10b.csv` が最新の状態にアップデートされますので、動作確認後にコミットしておくと次回以降その差分のタイルだけがビルドされます。
+
 ## 参考
 
 * https://qiita.com/hfu/items/915d7fb961d05670cab2 by @hfu
+* https://github.com/gsi-cyberjapan/mokuroku-spec
