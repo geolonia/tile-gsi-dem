@@ -19,3 +19,7 @@ $ mb-util tiles gsi-dem.mbtiles --image_format=png
 ```
 
 * `wget` コマンドでダウンロードしたファイルは、`maps.gsi.go.jp` 以下に保存されます。このディレクトリを残しておくと、次回以降同じ内容のファイルはダウンロードされませんので、定期的にアップデートしたい場合は残すことをおすすめします。
+
+## 参考
+
+* https://qiita.com/hfu/items/915d7fb961d05670cab2 by @hfu
