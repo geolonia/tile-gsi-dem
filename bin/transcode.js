@@ -2,7 +2,6 @@ const PNG = require('pngjs').PNG
 const recursive = require('recursive-readdir')
 const path = require('path')
 const fs = require('fs')
-const sharp = require('sharp')
 
 const fromdir = `${path.dirname(__dirname)}/maps.gsi.go.jp/xyz/dem_png`
 const publicdir = `${path.dirname(__dirname)}/tiles`
@@ -13,7 +12,7 @@ recursive(fromdir, (err, files) => {
   if (err) return console.error(err);
 
   files.forEach(async (file) => {
-    const filename = `${publicdir}${file.replace(fromdir, '').replace(/.png$/, '.webp')}`
+    const filename = `${publicdir}${file.replace(fromdir, '')}`
 
     const data = fs.readFileSync(file);
     const png = PNG.sync.read(data);
@@ -47,6 +46,6 @@ recursive(fromdir, (err, files) => {
 
     fs.mkdirSync(path.dirname(filename), {recursive: true})
     const buffer = PNG.sync.write(png)
-    await sharp(buffer).webp({ quality: 100 }).toFile(filename)
+    fs.writeFileSync(filename, buffer)
   });
 });
