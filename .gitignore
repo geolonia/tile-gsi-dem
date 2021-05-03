@@ -87,3 +87,4 @@ assets
 /wget-*
 /*.gsi.go.jp
 /tiles
+/*.mbtiles

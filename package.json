@@ -12,9 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "graceful-fs": "^4.2.6",
-    "node-filelist": "^1.0.0",
     "pngjs": "^6.0.0",
-    "recursive-readdir": "^2.2.2"
+    "recursive-readdir": "^2.2.2",
+    "sharp": "^0.28.1"
   }
 }
