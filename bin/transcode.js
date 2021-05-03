@@ -47,6 +47,6 @@ recursive(fromdir, (err, files) => {
 
     fs.mkdirSync(path.dirname(filename), {recursive: true})
     const buffer = PNG.sync.write(png)
-    await sharp(buffer).webp().toFile(filename)
+    await sharp(buffer).webp({ quality: 100 }).toFile(filename)
   });
 });
