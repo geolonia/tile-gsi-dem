@@ -1,6 +1,6 @@
-# 地理院陰影タイル for MapboxGL JS
+# 地理院標高タイル for MapboxGL JS
 
-このリポジトリは、国土地理院の陰影タイルを Mapbox GL JS で利用可能な Mapbox Terrain-RGB 互換の標高タイルに変換するためのスクリプトです。
+このリポジトリは、国土地理院の標高タイルを Mapbox GL JS で利用可能な Mapbox Terrain-RGB 互換の標高タイルに変換するためのスクリプトです。
 
 ## 標高タイルについて
 
