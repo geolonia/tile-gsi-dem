@@ -1,5 +1,7 @@
 # 地理院標高タイル for MapboxGL JS
 
+![](https://repository-images.githubusercontent.com/363929074/0d08f800-ad07-11eb-9e3a-5771e1e58c14)
+
 このリポジトリは、国土地理院の標高タイルを Mapbox GL JS で利用可能な Mapbox Terrain-RGB 互換の標高タイルに変換するためのスクリプトです。
 
 ## 標高タイルについて
