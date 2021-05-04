@@ -100,8 +100,11 @@ fetch(mokurokuURL)
         }
       }
 
-      fs.writeFileSync(mokurokuURL, buffer.toString())
-      fs.rmSync(log)
+      fs.writeFileSync(path.join(path.dirname(path.dirname(__filename)), 'mokuroku.csv'), buffer.toString())
+
+      if (isFile(log)) {
+        fs.unlinkSync(log)
+      }
 
       console.log('Done!')
     });
