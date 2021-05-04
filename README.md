@@ -10,16 +10,15 @@ https://fgd.gsi.go.jp/download/ref_dem.html
 
 ## ビルド方法
 
-タイルは、`mokuroku-dem10b.csv` を元に差分のみがビルドされます。
-はじめてタイルをビルドする際には、`mokuroku-dem10b.csv` を削除してください。
-
 ```
 $ git clone git@github.com:geolonia/tile-gsi-dem.git
 $ cd tile-gsi-dem
 $ npm run build
 ```
 
-タイルのビルドが完了すると、`mokuroku-dem10b.csv` が最新の状態にアップデートされますので、動作確認後にコミットしておくと次回以降その差分のタイルだけがビルドされます。
+* タイルのビルドを開始すると `.mokuroku.log` というファイルに、ビルドが終了したタイルのログが1行ずつ追加されます。
+* すべてのタイルのビルドが完了すると、`mokuroku.csv` というファイルが作成され、上述のログは削除されます。
+* `mokuroku.csv` がある場合は、`mokuroku.csv` を使用して差分のみ更新されます。
 
 ## 参考
 
