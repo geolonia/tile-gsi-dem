@@ -4,31 +4,11 @@ const fetch = require('node-fetch')
 const zlib = require('zlib');
 const PNG = require('pngjs').PNG
 
+const { csv2json } = require('./lib/csv2json')
+const { isFile } = require('./lib/isfile')
+
 const publicdir = `${path.dirname(__dirname)}/tiles`
 fs.mkdirSync(publicdir, {recursive: true})
-
-const csv2json = (csv) => {
-  const lines = csv.split(/\n/)
-  const json = {}
-  for (let i = 0; i < lines.length; i++) {
-    if (! lines[i]) {
-      break;
-    }
-    const col = lines[i].trim().split(/,/)
-    json[col[0]] = col
-  }
-
-  return json
-}
-
-const isFile = (file) => {
-  try {
-    fs.statSync(file);
-    return true
-  } catch(err) {
-    if(err.code === 'ENOENT') return false
-  }
-}
 
 const url = 'https://cyberjapandata.gsi.go.jp/xyz/dem_png'
 const mokurokuURL = `${url}/mokuroku.csv.gz`
