@@ -88,4 +88,5 @@ assets
 /*.gsi.go.jp
 /tiles
 /*.mbtiles
-/mokuroku.*
+/mokuroku.csv
+/.mokuroku.log
