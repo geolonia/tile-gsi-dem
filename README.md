@@ -24,3 +24,11 @@ $ npm run build
 
 * https://qiita.com/hfu/items/915d7fb961d05670cab2 by @hfu
 * https://github.com/gsi-cyberjapan/mokuroku-spec
+
+## ライセンス
+
+* MIT
+
+このリポジトリに含まれるソースコードのライセンスは MIT としますが、これらによる成果物をご利用になる場合は、測量法第２９条（複製）、第３０条（使用）に基づき国土地理院長への承認申請が必要になる可能性がありますので、ご注意ください。
+
+https://www.gsi.go.jp/LAW/2930-index.html
