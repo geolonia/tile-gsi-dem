@@ -16,6 +16,7 @@ https://fgd.gsi.go.jp/download/ref_dem.html
 $ git clone git@github.com:geolonia/tile-gsi-dem.git
 $ cd tile-gsi-dem
 $ npm run build
+$ mb-util --image_format=png tiles gsi-dem.mbtiles
 ```
 
 * タイルのビルドを開始すると `.mokuroku.log` というファイルに、ビルドが終了したタイルのログが1行ずつ追加され、途中で中断した場合はそこから開始されます。
