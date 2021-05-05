@@ -27,41 +27,49 @@ if (isFile(mokuroku)) {
   currentData = {}
 }
 
-fetch(mokurokuURL)
-  .then(res => res.buffer())
-  .then(buffer => {
-    zlib.unzip(buffer, async (err, buffer) => {
-      const newData = csv2json(buffer.toString())
-      for (const tile in newData) {
-        if (! currentData[tile] || newData[tile][3] !== currentData[tile][3]) {
-          try {
-            const tileUrl = `${url.replace(/\/$/, '')}/${tile}`
-            const res = await fetch(tileUrl)
-            const buffer = await res.buffer();
+const meta = {
+  "name": "Terrain-RGB DEM by GSI Japan",
+  "format": "png",
+  "attribution": "<a href=\"https://www.gsi.go.jp/\">GSI Japan</a>"
+}
 
-            const pngbuffer = transcode(buffer)
+fs.writeFileSync(`${publicdir.replace(/\/$/, '')}/metadata.json`, JSON.stringify(meta))
 
-            const filename = path.join(publicdir, tile)
-            fs.mkdirSync(path.dirname(filename), {recursive: true})
-            fs.writeFileSync(filename, pngbuffer)
+// fetch(mokurokuURL)
+//   .then(res => res.buffer())
+//   .then(buffer => {
+//     zlib.unzip(buffer, async (err, buffer) => {
+//       const newData = csv2json(buffer.toString())
+//       for (const tile in newData) {
+//         if (! currentData[tile] || newData[tile][3] !== currentData[tile][3]) {
+//           try {
+//             const tileUrl = `${url.replace(/\/$/, '')}/${tile}`
+//             const res = await fetch(tileUrl)
+//             const buffer = await res.buffer();
 
-            fs.appendFileSync(log, newData[tile].join(',') + "\n")
-            console.log(`${newData[tile][0]}: saved`)
-          } catch(e) {
-            console.log(`${newData[tile][0]}: error`)
-            console.error(e)
-          }
-        } else {
-          console.log(`${newData[tile][0]}: skip`)
-        }
-      }
+//             const pngbuffer = transcode(buffer)
 
-      fs.writeFileSync(path.join(path.dirname(path.dirname(__filename)), 'mokuroku.csv'), buffer.toString())
+//             const filename = path.join(publicdir, tile)
+//             fs.mkdirSync(path.dirname(filename), {recursive: true})
+//             fs.writeFileSync(filename, pngbuffer)
 
-      if (isFile(log)) {
-        fs.unlinkSync(log)
-      }
+//             fs.appendFileSync(log, newData[tile].join(',') + "\n")
+//             console.log(`${newData[tile][0]}: saved`)
+//           } catch(e) {
+//             console.log(`${newData[tile][0]}: error`)
+//             console.error(e)
+//           }
+//         } else {
+//           console.log(`${newData[tile][0]}: skip`)
+//         }
+//       }
 
-      console.log('Done!')
-    });
-  })
+//       fs.writeFileSync(path.join(path.dirname(path.dirname(__filename)), 'mokuroku.csv'), buffer.toString())
+
+//       if (isFile(log)) {
+//         fs.unlinkSync(log)
+//       }
+
+//       console.log('Done!')
+//     });
+//   })
