@@ -35,41 +35,41 @@ const meta = {
 
 fs.writeFileSync(`${publicdir.replace(/\/$/, '')}/metadata.json`, JSON.stringify(meta))
 
-// fetch(mokurokuURL)
-//   .then(res => res.buffer())
-//   .then(buffer => {
-//     zlib.unzip(buffer, async (err, buffer) => {
-//       const newData = csv2json(buffer.toString())
-//       for (const tile in newData) {
-//         if (! currentData[tile] || newData[tile][3] !== currentData[tile][3]) {
-//           try {
-//             const tileUrl = `${url.replace(/\/$/, '')}/${tile}`
-//             const res = await fetch(tileUrl)
-//             const buffer = await res.buffer();
+fetch(mokurokuURL)
+  .then(res => res.buffer())
+  .then(buffer => {
+    zlib.unzip(buffer, async (err, buffer) => {
+      const newData = csv2json(buffer.toString())
+      for (const tile in newData) {
+        if (! currentData[tile] || newData[tile][3] !== currentData[tile][3]) {
+          try {
+            const tileUrl = `${url.replace(/\/$/, '')}/${tile}`
+            const res = await fetch(tileUrl)
+            const buffer = await res.buffer();
 
-//             const pngbuffer = transcode(buffer)
+            const pngbuffer = transcode(buffer)
 
-//             const filename = path.join(publicdir, tile)
-//             fs.mkdirSync(path.dirname(filename), {recursive: true})
-//             fs.writeFileSync(filename, pngbuffer)
+            const filename = path.join(publicdir, tile)
+            fs.mkdirSync(path.dirname(filename), {recursive: true})
+            fs.writeFileSync(filename, pngbuffer)
 
-//             fs.appendFileSync(log, newData[tile].join(',') + "\n")
-//             console.log(`${newData[tile][0]}: saved`)
-//           } catch(e) {
-//             console.log(`${newData[tile][0]}: error`)
-//             console.error(e)
-//           }
-//         } else {
-//           console.log(`${newData[tile][0]}: skip`)
-//         }
-//       }
+            fs.appendFileSync(log, newData[tile].join(',') + "\n")
+            console.log(`${newData[tile][0]}: saved`)
+          } catch(e) {
+            console.log(`${newData[tile][0]}: error`)
+            console.error(e)
+          }
+        } else {
+          console.log(`${newData[tile][0]}: skip`)
+        }
+      }
 
-//       fs.writeFileSync(path.join(path.dirname(path.dirname(__filename)), 'mokuroku.csv'), buffer.toString())
+      fs.writeFileSync(path.join(path.dirname(path.dirname(__filename)), 'mokuroku.csv'), buffer.toString())
 
-//       if (isFile(log)) {
-//         fs.unlinkSync(log)
-//       }
+      if (isFile(log)) {
+        fs.unlinkSync(log)
+      }
 
-//       console.log('Done!')
-//     });
-//   })
+      console.log('Done!')
+    });
+  })
